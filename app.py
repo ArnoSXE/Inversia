@@ -8,7 +8,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-RENDER_URL = "https://inversia-ba86.onrender.com" 
+RENDER_URL = "https://inversia-ba86.onrender.com"  # ✅ Your Render app's public URL
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -31,11 +31,11 @@ def index():
             for engine in engines:
                 url = ""
                 if engine == "google":
-                    url = f"https://lens.google.com/uploadbyurl?url={public_url}/uploads/{filename}"
+                    url = f"https://lens.google.com/uploadbyurl?url={RENDER_URL}/uploads/{filename}"  # ✅ fixed here
                 elif engine == "yandex":
-                    url = f"https://yandex.com/images/search?rpt=imageview&url={public_url}/uploads/{filename}"
+                    url = f"https://yandex.com/images/search?rpt=imageview&url={RENDER_URL}/uploads/{filename}"  # ✅ fixed here
                 elif engine == "bing":
-                    url = f"https://www.bing.com/images/search?q=imgurl:{public_url}/uploads/{filename}&view=detailv2"
+                    url = f"https://www.bing.com/images/search?q=imgurl:{RENDER_URL}/uploads/{filename}&view=detailv2"  # ✅ fixed here
                 if url:
                     urls.append(url)
 
