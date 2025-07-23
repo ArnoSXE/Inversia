@@ -8,9 +8,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Set your live Render domain here
-# 🔁 CHANGE THIS once you know your Render URL
-public_url = "https://your-app-name.onrender.com"  # Replace with your real Render URL
+RENDER_URL = "https://inversia-ba86.onrender.com" 
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
