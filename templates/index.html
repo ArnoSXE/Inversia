@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reverse Image Search</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Reverse Image Search</h1>
+
+        <div class="mode-toggle">
+            <label class="switch">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider round"></span>
+            </label>
+            <span id="modeLabel">Light Mode</span>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" id="searchForm">
+            <div class="upload-area" id="uploadArea">
+                <p>📂 Drag & Drop or Click to Upload</p>
+                <input type="file" name="image" id="imageInput" required hidden>
+                <div id="preview"></div>
+            </div>
+
+            <div class="engines">
+                <label><input type="checkbox" name="engine" value="google"> Google</label>
+                <label><input type="checkbox" name="engine" value="yandex"> Yandex</label>
+                <label><input type="checkbox" name="engine" value="bing"> Bing</label>
+            </div>
+
+            <button type="submit" class="hover-button">Search</button>
+        </form>
+
+        <!-- Result Links Area -->
+        {% if urls %}
+        <div class="results">
+            <h2>Results:</h2>
+            <ul>
+                {% for url in urls %}
+                <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

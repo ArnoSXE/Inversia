@@ -1,0 +1,127 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: all 0.3s;
+}
+
+:root {
+    --bg: #f5f5f5;
+    --text: #111;
+    --button: #4caf50;
+    --button-hover: #388e3c;
+}
+
+.dark-mode {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --button: #1e88e5;
+    --button-hover: #1565c0;
+}
+
+.container {
+    width: 50%;
+    margin: 3em auto;
+    background-color: var(--bg);
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+h1 {
+    text-align: center;
+}
+
+.upload-area {
+    margin-bottom: 1em;
+}
+
+input[type="file"] {
+    width: 100%;
+}
+
+.engines label {
+    display: inline-block;
+    margin: 0.5em 1em;
+}
+
+.hover-button {
+    background-color: var(--button);
+    color: white;
+    padding: 0.7em 2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.hover-button:hover {
+    background-color: var(--button-hover);
+}
+
+#preview img {
+    margin-top: 1em;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+.switch input { display: none; }
+
+.slider {
+  position: absolute;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.mode-toggle {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.upload-area {
+    border: 2px dashed var(--button);
+    border-radius: 12px;
+    padding: 2em;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.02);
+    transition: 0.3s ease;
+}
+
+.upload-area.dragover {
+    background-color: rgba(0, 128, 255, 0.1);
+    border-color: #2196F3;
+}
+
+.upload-area p {
+    margin: 0;
+    color: var(--text);
+}
+
