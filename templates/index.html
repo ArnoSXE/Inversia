@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversia - Reverse Image Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <div class="container">
+        <h1 class="logo">Inversia</h1>
+
+        <div class="mode-toggle">
+            <span id="modeLabel">Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="modeToggle" checked>
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        {% if urls %}
+        <div class="results" id="resultsSection">
+            <h2><i class="fas fa-list-ul"></i> Search Results</h2>
+            <ul>
+                {% for url in urls %}
+                    {% if "google" in url %}
+                        <li><a href="{{ url }}" target="_blank" rel="noopener"><i class="fab fa-google"></i> View on Google Lens</a></li>
+                    {% elif "yandex" in url %}
+                        <li><a href="{{ url }}" target="_blank" rel="noopener"><i class="fab fa-y"></i> View on Yandex Images</a></li>
+                    {% elif "bing" in url %}
+                        <li><a href="{{ url }}" target="_blank" rel="noopener"><i class="fas fa-search"></i> View on Bing Visual Search</a></li>
+                    {% else %}
+                        <li><a href="{{ url }}" target="_blank" rel="noopener"><i class="fas fa-link"></i> {{ url }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+            });
+        </script>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data" id="searchForm">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon"><i class="fas fa-cloud-upload-alt fa-3x" style="color: var(--primary); margin-bottom: 1rem; display: block;"></i></div>
+                <p>Drag & Drop or Click to Upload</p>
+                <input type="file" name="image" id="imageInput" required hidden>
+                <div id="preview"></div>
+            </div>
+
+            <div class="camera-area">
+                <button type="button" id="cameraBtn" class="hover-button"><i class="fas fa-camera"></i> Use Camera</button>
+                <video id="cameraStream" autoplay playsinline></video>
+                <canvas id="cameraCapture" style="display: none;"></canvas>
+            </div>
+
+            <div class="engines">
+                <label><input type="checkbox" name="engine" value="google" checked> <i class="fab fa-google"></i> Google</label>
+                <label><input type="checkbox" name="engine" value="yandex" checked> <i class="fab fa-y"></i> Yandex</label>
+                <label><input type="checkbox" name="engine" value="bing" checked> <i class="fas fa-search"></i> Bing</label>
+            </div>
+
+            <button type="submit" class="hover-button">Analyze Image</button>
+        </form>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
+
+
