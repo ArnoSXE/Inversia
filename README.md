@@ -3,7 +3,7 @@
 A Flask-powered web app for Reverse Image Search using **Google Lens**, **Yandex**, and **Bing**. Upload an image and instantly explore where it's seen online.
 
 ## 🌐 Live Demo
-👉 [Click here to try Inversia](https://inversia-ba86.onrender.com)
+👉 [Click here to try Inversia](https://inversia-nine.vercel.app/)
 
 ## 🚀 Features
 - Upload `.jpg`, `.png`, `.jpeg` images
